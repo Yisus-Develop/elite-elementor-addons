@@ -1,0 +1,21 @@
+Name: elite-elementor-addons
+Short Description: Premium, reusable Elementor widgets with advanced animations and dynamic content support. Built for the CPS-LDA V3 migration.
+Topics: wordpress, elementor, widgets, php, industrial-design, glassmorphism, acf-integration
+
+---
+
+# Elite Elementor Addons
+
+**Elite Elementor Addons** is a focused, high-performance WordPress plugin extending Elementor with premium widgets designed for "Elite" industrial aesthetics.
+
+## 🚀 Key Features
+- **Elite Service Card**: Features advanced glassmorphism visuals, staggered entrance animations, and complex 3D hover effects.
+- **Dynamic Content Ready**: Native support for Elementor Dynamic Tags allows seamless integration with ACF/SCF fields.
+- **Performance First**: Zero-dependency animations using optimized CSS and minimal JS.
+
+## 🛠 Tech Stack
+- **Core**: PHP 7.4+
+- **Platform**: Elementor Widget API (v3.0+)
+- **Styling**: Modern CSS (Variables, Grid, Backdrop Filters)
+
+Built to bridge the gap between bespoke, pixel-perfect design and the flexibility of a visual page builder.

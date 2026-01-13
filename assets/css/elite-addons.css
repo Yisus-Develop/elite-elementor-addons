@@ -1,0 +1,166 @@
+/* ELITE ADDONS - GLOBAL STYLES */
+
+/* --- 1. Service Card --- */
+.elite-service-card {
+    position: relative;
+    min-height: 450px;
+    overflow: hidden;
+    cursor: pointer;
+    background-size: cover !important;
+    background-position: center !important;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 20px;
+}
+
+/* Background Zoom Effect */
+.elite-service-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.elite-service-card:hover::after {
+    transform: scale(1.15);
+}
+
+/* Gradient Overlay */
+.elite-service-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.5));
+    z-index: 1;
+    transition: all 0.4s ease;
+}
+
+.elite-service-card:hover::before {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0.2));
+}
+
+/* Golden Border & Shadow */
+.elite-service-card:hover {
+    box-shadow: inset 0 0 0 3px rgba(250, 204, 21, 0.6), 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* Content Layout */
+.elite-service-inner {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px;
+}
+
+/* Icon Styles */
+.elite-service-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(250, 204, 21, 0.15);
+    border: 1px solid rgba(250, 204, 21, 0.3);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: auto;
+}
+
+.elite-service-icon i,
+.elite-service-icon svg {
+    font-size: 1.8rem;
+    color: #FACC15;
+    transition: all 0.4s ease;
+    fill: #FACC15;
+}
+
+.elite-service-card:hover .elite-service-icon {
+    background: #FACC15;
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 0 20px rgba(250, 204, 21, 0.3);
+    border-color: #FACC15;
+}
+
+.elite-service-card:hover .elite-service-icon i,
+.elite-service-card:hover .elite-service-icon svg {
+    color: #000;
+    fill: #000;
+}
+
+/* Title Styles */
+.elite-service-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 10px 0;
+    transition: all 0.4s ease;
+}
+
+.elite-service-card:hover .elite-service-title {
+    text-shadow: 0 0 20px rgba(250, 204, 21, 0.5);
+}
+
+/* Description Styles */
+.elite-service-desc {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 0;
+}
+
+.elite-service-card:hover .elite-service-desc {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Entrance Animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.rb-animate-1 {
+    animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.1s;
+    opacity: 0;
+}
+
+.rb-animate-2 {
+    animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.2s;
+    opacity: 0;
+}
+
+.rb-animate-3 {
+    animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.3s;
+    opacity: 0;
+}
+
+.rb-animate-4 {
+    animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.5s;
+    opacity: 0;
+}
+
+.rb-animate-5 {
+    animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.6s;
+    opacity: 0;
+}
+
+.rb-animate-6 {
+    animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.7s;
+    opacity: 0;
+}

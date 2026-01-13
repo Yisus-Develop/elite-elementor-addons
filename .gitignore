@@ -1,0 +1,16 @@
+# System Files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Node / Build (if added later)
+node_modules/
+dist/
+.sass-cache/
+
+# Logs
+*.log
