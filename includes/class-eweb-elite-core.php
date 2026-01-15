@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class EWEB_Elite_Core {
 
 	const MINIMUM_ELEMENTOR_VERSION = '3.0.0';
-	const VERSION = '1.0.3';
+	const VERSION = '1.0.4';
 
 	private static $instance = null;
 
