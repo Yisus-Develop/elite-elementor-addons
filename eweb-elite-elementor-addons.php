@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define constants
-define( 'EWEB_ELITE_VERSION', '1.0.1' );
+define( 'EWEB_ELITE_VERSION', '1.0.2' );
 define( 'EWEB_ELITE_PATH', plugin_dir_path( __FILE__ ) );
 define( 'EWEB_ELITE_URL', plugin_dir_url( __FILE__ ) );
 

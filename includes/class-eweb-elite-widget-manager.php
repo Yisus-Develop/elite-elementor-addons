@@ -40,6 +40,9 @@ class EWEB_Elite_Widget_Manager {
         require_once dirname( __DIR__ ) . '/widgets/elite-service-card.php';
         $widgets_manager->register( new \EWEB_Elite_Service_Card() );
 
+        // 2. Section Header
+        require_once dirname( __DIR__ ) . '/widgets/elite-section-header.php';
+        $widgets_manager->register( new \EWEB_Elite_Section_Header() );
     }
 
 }

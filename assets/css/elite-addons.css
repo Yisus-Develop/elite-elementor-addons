@@ -164,3 +164,49 @@
     animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.7s;
     opacity: 0;
 }
+
+/* --- 2. Elite Header --- */
+.elite-header-container {
+    position: relative;
+    padding: 60px 0;
+    margin-bottom: 40px;
+}
+
+.elite-header-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(4rem, 15vw, 12rem);
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03);
+    text-transform: uppercase;
+    white-space: nowrap;
+    z-index: 0;
+    pointer-events: none;
+    letter-spacing: 10px;
+}
+
+.elite-header-content {
+    position: relative;
+    z-index: 1;
+}
+
+.elite-header-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #FACC15;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.elite-header-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.1;
+    margin: 0;
+    text-transform: uppercase;
+}
