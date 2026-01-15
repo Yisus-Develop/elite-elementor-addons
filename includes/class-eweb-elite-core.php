@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class EWEB_Elite_Core {
 
 	const MINIMUM_ELEMENTOR_VERSION = '3.0.0';
-	const VERSION = '1.0.4';
+	const VERSION = '1.0.5';
 
 	private static $instance = null;
 
@@ -44,16 +44,6 @@ class EWEB_Elite_Core {
 		// Load Widget Manager
 		require_once EWEB_ELITE_PATH . 'includes/class-eweb-elite-widget-manager.php';
 		EWEB_Elite_Widget_Manager::instance();
-
-		// Initialize GitHub Updater
-		if ( is_admin() ) {
-			require_once EWEB_ELITE_PATH . 'includes/class-eweb-github-updater.php';
-			new EWEB_GitHub_Updater( 
-				EWEB_ELITE_PATH . 'eweb-elite-elementor-addons.php', 
-				'Yisus-Develop', 
-				'elite-elementor-addons' 
-			);
-		}
 	}
 
 	public function admin_notice_missing_elementor() {

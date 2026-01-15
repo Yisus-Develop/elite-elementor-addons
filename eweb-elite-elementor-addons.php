@@ -2,7 +2,7 @@
 /**
  * Plugin Name: EWEB - Elite Elementor Addons
  * Description: Premium Elementor widgets with advanced animations and glassmorphism effects.
- * Version: 1.0.4
+ * Version: 1.0.5
  * Author: Yisus Develop
  * Author URI: https://github.com/Yisus-Develop
  * Plugin URI: https://github.com/Yisus-Develop/elite-elementor-addons
@@ -19,10 +19,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define constants
-define( 'EWEB_ELITE_VERSION', '1.0.4' );
+define( 'EWEB_ELITE_VERSION', '1.0.5' );
+define( 'EWEB_ELITE_FILE', __FILE__ );
 define( 'EWEB_ELITE_PATH', plugin_dir_path( __FILE__ ) );
 define( 'EWEB_ELITE_URL', plugin_dir_url( __FILE__ ) );
 
 // Load Core Class
 require_once EWEB_ELITE_PATH . 'includes/class-eweb-elite-core.php';
 EWEB_Elite_Core::get_instance();
+
+// Initialize GitHub Updater (must use __FILE__ from main plugin file)
+if ( is_admin() ) {
+	require_once EWEB_ELITE_PATH . 'includes/class-eweb-github-updater.php';
+	new EWEB_GitHub_Updater( __FILE__, 'Yisus-Develop', 'elite-elementor-addons' );
+}
