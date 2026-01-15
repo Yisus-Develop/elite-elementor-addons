@@ -2,16 +2,16 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
- * Elite Widget Manager
+ * EWEB Elite Widget Manager
  * 
  * Handles reading and registering all custom Elementor widgets.
  * Keeps the main plugin file clean.
  */
-class Elite_Widget_Manager {
+class EWEB_Elite_Widget_Manager {
 
     /**
      * Instance
-     * @var Elite_Widget_Manager
+     * @var EWEB_Elite_Widget_Manager
      */
     private static $_instance = null;
 
@@ -38,11 +38,7 @@ class Elite_Widget_Manager {
         
         // 1. Service Card
         require_once dirname( __DIR__ ) . '/widgets/elite-service-card.php';
-        $widgets_manager->register( new \Elite_Service_Card() );
-
-        // 2. Section Header (Placeholder for future)
-        // require_once dirname( __DIR__ ) . '/widgets/elite-section-header.php';
-        // $widgets_manager->register( new \Elite_Section_Header() );
+        $widgets_manager->register( new \EWEB_Elite_Service_Card() );
 
     }
 

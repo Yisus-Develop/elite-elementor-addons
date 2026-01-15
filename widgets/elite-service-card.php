@@ -1,14 +1,14 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Elite_Service_Card extends \Elementor\Widget_Base {
+class EWEB_Elite_Service_Card extends \Elementor\Widget_Base {
 
 	public function get_name() {
-		return 'elite_service_card';
+		return 'eweb_elite_service_card';
 	}
 
 	public function get_title() {
-		return esc_html__( 'Elite Service Card', 'elite-addons' );
+		return esc_html__( 'EWEB - Elite Service Card', 'eweb-elite-addons' );
 	}
 
 	public function get_icon() {
@@ -16,7 +16,7 @@ class Elite_Service_Card extends \Elementor\Widget_Base {
 	}
 
 	public function get_categories() {
-		return [ 'elite-addons' ];
+		return [ 'eweb-elite-addons' ];
 	}
 
 	protected function _register_controls() {
