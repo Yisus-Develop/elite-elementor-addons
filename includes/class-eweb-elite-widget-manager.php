@@ -43,6 +43,10 @@ class EWEB_Elite_Widget_Manager {
         // 2. Section Header
         require_once dirname( __DIR__ ) . '/widgets/elite-section-header.php';
         $widgets_manager->register( new \EWEB_Elite_Section_Header() );
+
+        // 3. Hero Banner
+        require_once dirname( __DIR__ ) . '/widgets/elite-hero-banner.php';
+        $widgets_manager->register( new \EWEB_Elite_Hero_Banner() );
     }
 
 }
