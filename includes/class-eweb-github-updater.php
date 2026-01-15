@@ -57,9 +57,14 @@ if ( ! class_exists( 'EWEB_GitHub_Updater' ) ) {
 		 * Check for updates in GitHub
 		 */
 		public function check_update( $transient ) {
-			if ( empty( $transient->checked ) ) {
+			if ( empty( $transient->checked ) && ! isset( $_GET['force-check'] ) ) {
 				return $transient;
 			}
+
+            // Force refresh if requested
+            if ( isset( $_GET['force-check'] ) ) {
+                $this->github_response = null;
+            }
 
 			$remote = $this->get_github_data();
 			$local_data = $this->get_local_plugin_data();
@@ -133,6 +138,7 @@ if ( ! class_exists( 'EWEB_GitHub_Updater' ) ) {
 				'timeout' => 15,
 				'headers' => [
 					'Accept' => 'application/vnd.github.v3+json',
+                    'User-Agent' => 'EWEB-Elite-Update-Checker'
 				],
 			];
 
