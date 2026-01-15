@@ -64,10 +64,20 @@ if ( ! class_exists( 'EWEB_GitHub_Updater' ) ) {
             // Force refresh if requested
             if ( isset( $_GET['force-check'] ) ) {
                 $this->github_response = null;
+                delete_site_transient( 'update_plugins' );
             }
 
 			$remote = $this->get_github_data();
 			$local_data = $this->get_local_plugin_data();
+
+            // Debug logging (remove after testing)
+            if ( isset( $_GET['eweb-debug'] ) ) {
+                error_log( 'EWEB Updater Debug:' );
+                error_log( 'Plugin Slug: ' . $this->plugin_slug );
+                error_log( 'Local Version: ' . $local_data['Version'] );
+                error_log( 'Remote Version: ' . ( $remote ? $remote->tag_name : 'NULL' ) );
+                error_log( 'File Path: ' . $this->file );
+            }
 
 			if ( $remote && version_compare( $local_data['Version'], $remote->tag_name, '<' ) ) {
 				$obj = new stdClass();
@@ -75,6 +85,7 @@ if ( ! class_exists( 'EWEB_GitHub_Updater' ) ) {
 				$obj->new_version = $remote->tag_name;
 				$obj->url = 'https://github.com/' . $this->github_user . '/' . $this->github_repo;
 				$obj->package = $remote->zipball_url;
+                $obj->plugin = $this->plugin_slug;
 
 				$transient->response[ $this->plugin_slug ] = $obj;
 			}
