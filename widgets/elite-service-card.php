@@ -118,6 +118,178 @@ class EWEB_Elite_Service_Card extends \Elementor\Widget_Base {
 
 		$this->end_controls_section();
 
+		// =====================
+		// STYLE TAB
+		// =====================
+
+		// Icon Style
+		$this->start_controls_section(
+			'section_style_icon',
+			[
+				'label' => esc_html__( 'Icon', 'eweb-elite-addons' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'icon_color',
+			[
+				'label' => esc_html__( 'Icon Color', 'eweb-elite-addons' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'default' => '#FACC15',
+				'selectors' => [
+					'{{WRAPPER}} .elite-service-icon i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .elite-service-icon svg' => 'fill: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'icon_size',
+			[
+				'label' => esc_html__( 'Icon Size', 'eweb-elite-addons' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'em' ],
+				'range' => [
+					'px' => [ 'min' => 20, 'max' => 100 ],
+					'em' => [ 'min' => 1, 'max' => 6 ],
+				],
+				'default' => [ 'size' => 48, 'unit' => 'px' ],
+				'selectors' => [
+					'{{WRAPPER}} .elite-service-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .elite-service-icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->end_controls_section();
+
+		// Title Style
+		$this->start_controls_section(
+			'section_style_title',
+			[
+				'label' => esc_html__( 'Title', 'eweb-elite-addons' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'title_color',
+			[
+				'label' => esc_html__( 'Color', 'eweb-elite-addons' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'default' => '#ffffff',
+				'selectors' => [
+					'{{WRAPPER}} .elite-service-title' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'title_typography',
+				'selector' => '{{WRAPPER}} .elite-service-title',
+			]
+		);
+
+		$this->end_controls_section();
+
+		// Description Style
+		$this->start_controls_section(
+			'section_style_description',
+			[
+				'label' => esc_html__( 'Description', 'eweb-elite-addons' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'description_color',
+			[
+				'label' => esc_html__( 'Color', 'eweb-elite-addons' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'default' => 'rgba(255,255,255,0.8)',
+				'selectors' => [
+					'{{WRAPPER}} .elite-service-desc' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'description_typography',
+				'selector' => '{{WRAPPER}} .elite-service-desc',
+			]
+		);
+
+		$this->end_controls_section();
+
+		// Card Style
+		$this->start_controls_section(
+			'section_style_card',
+			[
+				'label' => esc_html__( 'Card', 'eweb-elite-addons' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'overlay_color',
+			[
+				'label' => esc_html__( 'Overlay Color', 'eweb-elite-addons' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'default' => 'rgba(0, 0, 0, 0.6)',
+				'selectors' => [
+					'{{WRAPPER}} .elite-service-card::before' => 'background: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'card_padding',
+			[
+				'label' => esc_html__( 'Padding', 'eweb-elite-addons' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%' ],
+				'selectors' => [
+					'{{WRAPPER}} .elite-service-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'card_min_height',
+			[
+				'label' => esc_html__( 'Minimum Height', 'eweb-elite-addons' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', 'vh' ],
+				'range' => [
+					'px' => [ 'min' => 200, 'max' => 600 ],
+					'vh' => [ 'min' => 20, 'max' => 80 ],
+				],
+				'default' => [ 'size' => 350, 'unit' => 'px' ],
+				'selectors' => [
+					'{{WRAPPER}} .elite-service-card' => 'min-height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'card_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'eweb-elite-addons' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors' => [
+					'{{WRAPPER}} .elite-service-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->end_controls_section();
+
 	}
 
 	protected function render() {

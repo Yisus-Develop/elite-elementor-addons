@@ -119,11 +119,15 @@ class EWEB_Elite_Hero_Banner extends \Elementor\Widget_Base {
 
 		$this->end_controls_section();
 
-		// Style Section
+		// =====================
+		// STYLE TAB
+		// =====================
+
+		// General Style
 		$this->start_controls_section(
-			'section_style',
+			'section_style_general',
 			[
-				'label' => esc_html__( 'Style', 'eweb-elite-addons' ),
+				'label' => esc_html__( 'General', 'eweb-elite-addons' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -137,7 +141,7 @@ class EWEB_Elite_Hero_Banner extends \Elementor\Widget_Base {
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'min_height',
 			[
 				'label' => esc_html__( 'Minimum Height', 'eweb-elite-addons' ),
@@ -150,6 +154,166 @@ class EWEB_Elite_Hero_Banner extends \Elementor\Widget_Base {
 				'default' => [
 					'unit' => 'vh',
 					'size' => 90,
+				],
+			]
+		);
+
+		$this->add_control(
+			'overlay_color',
+			[
+				'label' => esc_html__( 'Overlay Color', 'eweb-elite-addons' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'default' => 'rgba(0, 0, 0, 0.6)',
+				'selectors' => [
+					'{{WRAPPER}} .elite-hero-overlay' => 'background: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->end_controls_section();
+
+		// Tag Style
+		$this->start_controls_section(
+			'section_style_tag',
+			[
+				'label' => esc_html__( 'Tag', 'eweb-elite-addons' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'tag_text_color',
+			[
+				'label' => esc_html__( 'Text Color', 'eweb-elite-addons' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'default' => '#1a1a1a',
+				'selectors' => [
+					'{{WRAPPER}} .elite-hero-tag' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'tag_typography',
+				'selector' => '{{WRAPPER}} .elite-hero-tag',
+			]
+		);
+
+		$this->end_controls_section();
+
+		// Title Style
+		$this->start_controls_section(
+			'section_style_title',
+			[
+				'label' => esc_html__( 'Title', 'eweb-elite-addons' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'title_color',
+			[
+				'label' => esc_html__( 'Color', 'eweb-elite-addons' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'default' => '#ffffff',
+				'selectors' => [
+					'{{WRAPPER}} .elite-hero-title' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'title_typography',
+				'selector' => '{{WRAPPER}} .elite-hero-title',
+			]
+		);
+
+		$this->end_controls_section();
+
+		// Subtitle Style
+		$this->start_controls_section(
+			'section_style_subtitle',
+			[
+				'label' => esc_html__( 'Subtitle', 'eweb-elite-addons' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'subtitle_color',
+			[
+				'label' => esc_html__( 'Color', 'eweb-elite-addons' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'default' => 'rgba(255,255,255,0.8)',
+				'selectors' => [
+					'{{WRAPPER}} .elite-hero-subtitle' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'subtitle_typography',
+				'selector' => '{{WRAPPER}} .elite-hero-subtitle',
+			]
+		);
+
+		$this->end_controls_section();
+
+		// Button Style
+		$this->start_controls_section(
+			'section_style_button',
+			[
+				'label' => esc_html__( 'Button', 'eweb-elite-addons' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'button_text_color',
+			[
+				'label' => esc_html__( 'Text Color', 'eweb-elite-addons' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'default' => '#1a1a1a',
+				'selectors' => [
+					'{{WRAPPER}} .elite-hero-button' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'button_typography',
+				'selector' => '{{WRAPPER}} .elite-hero-button',
+			]
+		);
+
+		$this->add_responsive_control(
+			'button_padding',
+			[
+				'label' => esc_html__( 'Padding', 'eweb-elite-addons' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .elite-hero-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'button_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'eweb-elite-addons' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors' => [
+					'{{WRAPPER}} .elite-hero-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
