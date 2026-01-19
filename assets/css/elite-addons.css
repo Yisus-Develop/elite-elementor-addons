@@ -1,15 +1,21 @@
-/* ELITE ADDONS - GLOBAL STYLES */
+/* ELITE ADDONS - PREMIUM STYLES V2 */
 
-/* --- 1. Service Card --- */
+/* --- 1. Service Card (Premium "Industrial" Design) --- */
 .elite-service-card {
     position: relative;
-    min-height: 450px;
+    min-height: 480px; /* Taller for presence */
     overflow: hidden;
     cursor: pointer;
     background-size: cover !important;
     background-position: center !important;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 20px;
+    border-radius: 4px; /* Slightly sharper corners for industrial feel */
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.elite-service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 
 /* Background Zoom Effect */
@@ -21,33 +27,37 @@
     background-size: cover;
     background-position: center;
     z-index: 0;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.7s ease-out;
 }
 
 .elite-service-card:hover::after {
-    transform: scale(1.15);
+    transform: scale(1.1);
 }
 
-/* Gradient Overlay */
-.elite-service-card::before {
-    content: '';
+/* Dark Gradient Overlay */
+.elite-service-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.5));
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.3) 0%,
+        rgba(0,0,0,0.6) 50%,
+        rgba(0,0,0,0.95) 100%
+    );
     z-index: 1;
-    transition: all 0.4s ease;
+    transition: background 0.4s ease;
 }
 
-.elite-service-card:hover::before {
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0.2));
+.elite-service-card:hover .elite-service-overlay {
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.4) 0%,
+        rgba(0,18,34,0.7) 40%, /* Hint of blue/industrial tone */
+        rgba(0,5,10,0.98) 100%
+    );
 }
 
-/* Golden Border & Shadow */
-.elite-service-card:hover {
-    box-shadow: inset 0 0 0 3px rgba(250, 204, 21, 0.6), 0 20px 60px rgba(0, 0, 0, 0.4);
-}
-
-/* Content Layout */
+/* Inner Layout */
 .elite-service-inner {
     position: relative;
     z-index: 2;
@@ -56,162 +66,121 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 40px;
+    box-sizing: border-box;
 }
 
-/* Icon Styles */
+/* --- Top Section: Icon --- */
+.elite-service-top {
+    display: flex;
+    justify-content: flex-start;
+}
+
 .elite-service-icon {
-    width: 70px;
-    height: 70px;
-    background: rgba(250, 204, 21, 0.15);
-    border: 1px solid rgba(250, 204, 21, 0.3);
-    border-radius: 16px;
+    width: 64px;
+    height: 64px;
+    background: rgba(250, 204, 21, 0.15); /* Low opacity yellow */
+    border: 1px solid rgba(250, 204, 21, 0.3); /* Subtle border */
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    margin-bottom: auto;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .elite-service-icon i,
 .elite-service-icon svg {
-    font-size: 1.8rem;
+    font-size: 28px;
     color: #FACC15;
-    transition: all 0.4s ease;
     fill: #FACC15;
+    transition: all 0.3s ease;
 }
 
 .elite-service-card:hover .elite-service-icon {
-    background: #FACC15;
-    transform: scale(1.15) rotate(5deg);
-    box-shadow: 0 0 20px rgba(250, 204, 21, 0.3);
+    background: #FACC15; /* Full yellow on hover */
     border-color: #FACC15;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(250, 204, 21, 0.4);
 }
 
 .elite-service-card:hover .elite-service-icon i,
 .elite-service-card:hover .elite-service-icon svg {
-    color: #000;
-    fill: #000;
+    color: #1a1a1a; /* Dark icon on bright background */
+    fill: #1a1a1a;
 }
 
-/* Title Styles */
-.elite-service-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #fff;
-    margin: 0 0 10px 0;
-    transition: all 0.4s ease;
+/* --- Bottom Section: Title, Desc, Arrow --- */
+.elite-service-bottom {
+    display: flex;
+    align-items: flex-end; /* Align arrow and text bottom */
+    justify-content: space-between; /* Space them out */
+    padding-top: 20px; /* Breathing room */
+    position: relative; /* For slide logic if needed */
 }
 
-.elite-service-card:hover .elite-service-title {
-    text-shadow: 0 0 20px rgba(250, 204, 21, 0.5);
+/* Content Wrapper */
+/* We want title to stay, but description to potentially slide in or just sit there nicely */
+.elite-service-content {
+    flex: 1; /* Take mostly remaining space */
+    padding-right: 20px;
+    transform: translateY(15px); /* Initial offset for slide effect */
+    transition: transform 0.4s ease-out;
 }
 
-/* Description Styles */
-.elite-service-desc {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.9rem;
-    line-height: 1.6;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    margin: 0;
-}
-
-.elite-service-card:hover .elite-service-desc {
-    opacity: 1;
+.elite-service-card:hover .elite-service-content {
     transform: translateY(0);
 }
 
-/* Entrance Animations */
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(60px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.rb-animate-1 {
-    animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.1s;
-    opacity: 0;
-}
-
-.rb-animate-2 {
-    animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.2s;
-    opacity: 0;
-}
-
-.rb-animate-3 {
-    animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.3s;
-    opacity: 0;
-}
-
-.rb-animate-4 {
-    animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.5s;
-    opacity: 0;
-}
-
-.rb-animate-5 {
-    animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.6s;
-    opacity: 0;
-}
-
-.rb-animate-6 {
-    animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.7s;
-    opacity: 0;
-}
-
-/* --- 2. Elite Header --- */
-.elite-header-container {
-    position: relative;
-    padding: 60px 0;
-    margin-bottom: 40px;
-}
-
-.elite-header-watermark {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: clamp(4rem, 15vw, 12rem);
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0.03);
-    text-transform: uppercase;
-    white-space: nowrap;
-    z-index: 0;
-    pointer-events: none;
-    letter-spacing: 10px;
-}
-
-.elite-header-content {
-    position: relative;
-    z-index: 1;
-}
-
-.elite-header-label {
-    font-size: 0.9rem;
+.elite-service-title {
+    font-size: 1.6rem;
     font-weight: 700;
-    color: #FACC15;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    display: inline-block;
-}
-
-.elite-header-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 800;
     color: #fff;
-    line-height: 1.1;
-    margin: 0;
-    text-transform: uppercase;
+    margin: 0 0 8px 0;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    transform-origin: left bottom;
+    transition: transform 0.4s ease;
 }
 
-/* --- 3. Elite Hero Banner --- */
+.elite-service-desc {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+    height: 0; 
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.elite-service-card:hover .elite-service-desc {
+    height: auto; /* Allow growth */
+    max-height: 100px; /* Safe max */
+    opacity: 1;
+    margin-top: 5px;
+}
+
+/* Arrow Button */
+.elite-service-arrow {
+    width: 45px;
+    height: 45px;
+    border: 1px solid #FACC15;
+    color: #FACC15;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    flex-shrink: 0; /* Don't squash me */
+}
+
+.elite-service-card:hover .elite-service-arrow {
+    background: #FACC15;
+    color: #1a1a1a;
+    box-shadow: 0 0 10px rgba(250, 204, 21, 0.4);
+}
+
+
+/* --- 2. Elite Hero Banner (Cinematic Entrance) --- */
 .elite-hero-banner {
     position: relative;
     display: flex;
@@ -220,17 +189,21 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 90vh;
+    min-height: 90vh; /* Fallback */
     padding: 60px 20px;
+    overflow: hidden; /* For parallax bounds */
+}
+
+/* Parallax Background Helper */
+/* Requires JS usually, but we can fake smooth rendering */
+.elite-hero-banner {
+    background-attachment: fixed; /* Simple parallax */
 }
 
 .elite-hero-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(0, 20, 40, 0.85) 0%, rgba(0, 10, 20, 0.7) 100%);
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0, 10, 18, 0.85) 0%, rgba(0, 5, 10, 0.75) 100%);
     z-index: 1;
 }
 
@@ -238,54 +211,101 @@
     position: relative;
     z-index: 2;
     text-align: center;
-    max-width: 900px;
+    max-width: 1000px;
 }
 
+/* Tag */
 .elite-hero-tag {
     display: inline-block;
-    padding: 8px 20px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 3px;
+    padding: 6px 16px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
     text-transform: uppercase;
     color: #000;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+    border-radius: 2px;
+    
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 0.3s;
 }
 
+/* Title */
 .elite-hero-title {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 300;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 800; /* Thicker */
     color: #fff;
-    line-height: 1.1;
-    margin: 0 0 25px 0;
+    line-height: 1.05;
+    margin: 0 0 30px 0;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 0.5s;
 }
 
 .elite-hero-title em {
-    font-style: italic;
-    font-weight: 400;
+    font-style: normal;
+    color: #FACC15; /* Force yellow */
 }
 
+/* Subtitle */
 .elite-hero-subtitle {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.7);
-    max-width: 600px;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 650px;
     margin: 0 auto 40px;
-    line-height: 1.7;
+    line-height: 1.6;
+    font-weight: 400;
+
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 0.7s;
 }
 
+/* Button */
 .elite-hero-button {
     display: inline-block;
-    padding: 18px 40px;
-    font-size: 0.85rem;
+    padding: 16px 45px;
+    font-size: 0.9rem;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #000;
+    background: #FACC15;
     text-decoration: none;
+    border: none;
+    cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(250, 204, 21, 0.2);
+
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards 0.9s;
 }
 
 .elite-hero-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(250, 204, 21, 0.3);
+    box-shadow: 0 8px 25px rgba(250, 204, 21, 0.5);
+    background: #fde047; /* Lighter yellow */
 }
+
+/* --- Keyframes --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUpCard {
+    from { opacity:0; transform: translateY(20px); }
+    to { opacity:1; transform: translateY(0); }
+}
+
+/* --- Utilities --- */
+.rb-animate-1 { animation-delay: 0.1s; }
+.rb-animate-2 { animation-delay: 0.2s; }
+.rb-animate-3 { animation-delay: 0.3s; }
+.rb-animate-4 { animation-delay: 0.4s; }

@@ -292,7 +292,7 @@ class EWEB_Elite_Service_Card extends \Elementor\Widget_Base {
 
 	}
 
-	protected function render() {
+    protected function render() {
 		$settings = $this->get_settings_for_display();
         
         // Prepare variables
@@ -301,16 +301,24 @@ class EWEB_Elite_Service_Card extends \Elementor\Widget_Base {
         $bg_url = $settings['bg_image']['url'];
         $anim_class = $settings['anim_delay'];
 
-        // Render HTML structure matching our verified hybrid design
+        // Render HTML structure matching premium design
         ?>
         <div class="elite-service-card <?php echo esc_attr($anim_class); ?>" style="background-image: url('<?php echo esc_url($bg_url); ?>');">
+            <div class="elite-service-overlay"></div>
             <div class="elite-service-inner">
-                <div class="elite-service-icon">
-                    <?php \Elementor\Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                <div class="elite-service-top">
+                    <div class="elite-service-icon">
+                        <?php \Elementor\Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                    </div>
                 </div>
-                <div class="elite-service-content">
-                    <h3 class="elite-service-title"><?php echo esc_html($title); ?></h3>
-                    <p class="elite-service-desc"><?php echo esc_html($desc); ?></p>
+                <div class="elite-service-bottom">
+                    <div class="elite-service-content">
+                        <h3 class="elite-service-title"><?php echo esc_html($title); ?></h3>
+                        <p class="elite-service-desc"><?php echo esc_html($desc); ?></p>
+                    </div>
+                    <div class="elite-service-arrow">
+                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -323,14 +331,22 @@ class EWEB_Elite_Service_Card extends \Elementor\Widget_Base {
         var image_url = settings.bg_image.url;
         #>
         <div class="elite-service-card" style="background-image: url('{{ image_url }}');">
+            <div class="elite-service-overlay"></div>
             <div class="elite-service-inner">
-                <div class="elite-service-icon">
-                    <# var iconHTML = elementor.helpers.renderIcon( view, settings.icon, { 'aria-hidden': true }, 'i' , 'object' ); #>
-					{{{ iconHTML.value }}}
+                <div class="elite-service-top">
+                    <div class="elite-service-icon">
+                        <# var iconHTML = elementor.helpers.renderIcon( view, settings.icon, { 'aria-hidden': true }, 'i' , 'object' ); #>
+                        {{{ iconHTML.value }}}
+                    </div>
                 </div>
-                <div class="elite-service-content">
-                    <h3 class="elite-service-title">{{{ settings.title }}}</h3>
-                    <p class="elite-service-desc">{{{ settings.description }}}</p>
+                <div class="elite-service-bottom">
+                    <div class="elite-service-content">
+                        <h3 class="elite-service-title">{{{ settings.title }}}</h3>
+                        <p class="elite-service-desc">{{{ settings.description }}}</p>
+                    </div>
+                    <div class="elite-service-arrow">
+                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </div>
                 </div>
             </div>
         </div>
